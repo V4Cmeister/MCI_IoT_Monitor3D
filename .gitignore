@@ -12,6 +12,9 @@ __pycache__/
 # Except the 3D-Print_Models directory
 !3D-models/3D-Print_Models/
 
+# Ignore credentials file
+credentials.py
+
 # Distribution / packaging
 .Python
 build/

@@ -14,6 +14,7 @@ __pycache__/
 
 # Ignore credentials file
 credentials.py
+db/*
 
 # Distribution / packaging
 .Python

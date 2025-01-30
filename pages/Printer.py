@@ -2,15 +2,15 @@ import streamlit as st
 import requests
 import serial
 
-# Raspberry Pi IP und Port
-raspberry_pi_ip = "http://<raspberry-pi-ip>:5002"
+# IP-Adresse des Raspberry Pi über Tailscale
+raspberry_pi_ip = "http://100.93.75.50:5002"
+
 printer_port = "/dev/ttyUSB0"
 baud_rate = 115200
 
-st.title("3D-Druck-Steuerung mit Videoüberwachung")
+st.title("Raspberry Pi Video Stream")
 
-# Video-Stream anzeigen
-st.header("Live-Video")
+# Video anzeigen
 st.markdown(
     f"""
     <div style="text-align: center;">
@@ -19,6 +19,8 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
+st.write("Das ist der Live-Stream vom Raspberry Pi!")
 
 # Datei-Upload für G-code
 st.header("G-code hochladen")

@@ -1,28 +1,42 @@
 import streamlit as st
+from credentials_page import credentials
 
 st.set_page_config(
-    page_title="Hello",
-    page_icon="👋",
+    page_title="Monitor3D",
+    page_icon="🖨️",
 )
 
-st.write("# Welcome to Streamlit! 👋")
+def login():
+    st.write("# Monitor3D")
+    st.sidebar.error("Login for access!")
 
-st.sidebar.success("Select a demo above.")
+    username = st.text_input("Username")
+    password = st.text_input("Password", type="password")
+    if st.button("Login"):
+        if username in credentials and credentials[username] == password:
+            st.session_state["logged_in"] = True
+            st.rerun()
+        else:
+            st.error("Invalid username or password")
+    if st.button("GUEST Login"):
+        st.session_state["logged_in"] = True
+        st.rerun()
 
-st.markdown(
-    """
-    Streamlit is an open-source app framework built specifically for
-    Machine Learning and Data Science projects.
-    **👈 Select a demo from the sidebar** to see some examples
-    of what Streamlit can do!
-    ### Want to learn more?
-    - Check out [streamlit.io](https://streamlit.io)
-    - Jump into our [documentation](https://docs.streamlit.io)
-    - Ask a question in our [community
-        forums](https://discuss.streamlit.io)
-    ### See more complex demos
-    - Use a neural net to [analyze the Udacity Self-driving Car Image
-        Dataset](https://github.com/streamlit/demo-self-driving)
-    - Explore a [New York City rideshare dataset](https://github.com/streamlit/demo-uber-nyc-pickups)
-"""
-)
+    st.markdown(
+            """
+            - **Printer:** Start a print job.
+            - **Reservation:** Book a slot if the printer is currently in use.
+            - **Status:** Display the dashboard and enable video monitoring.
+            """
+        )
+
+if "logged_in" not in st.session_state:
+    st.session_state["logged_in"] = False
+
+if not st.session_state["logged_in"]:
+    login()
+else:
+    st.sidebar.success("Logged in!")
+    if st.button("Logout"):
+        st.session_state["logged_in"] = False
+        st.rerun()

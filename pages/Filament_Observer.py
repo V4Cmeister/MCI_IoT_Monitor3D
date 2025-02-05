@@ -4,18 +4,22 @@ from tinydb import TinyDB, Query
 from datetime import datetime, timedelta
 import time
 
+def check_login():
+    if "logged_in" not in st.session_state or not st.session_state["logged_in"]:
+        st.switch_page("Login.py")
+
+check_login()
+
 # Initialize TinyDB
 db = TinyDB('db/filament_weight.json')
 Weight = Query()
 
 # Streamlit setup
-st.set_page_config(page_title="MQTT Plotting Demo", page_icon="📈")
-st.markdown("# MQTT Plotting Demo")
+st.set_page_config(page_title="Filament Observer", page_icon="📈")
+st.markdown("#Filament Observer")
 st.sidebar.header("MQTT Plotting Demo")
 st.write(
-    """This demo illustrates a combination of MQTT data fetching and plotting with
-Streamlit. We're fetching data from the MQTT topic "Filament_Supervision/filament_weight"
-and plotting it in real-time. Enjoy!"""
+    """Filamentgewichtsdaten werden von einem ESP32-Mikrocontroller über MQTT empfangen und in einer TinyDB-Datenbank gespeichert."""
 )
 
 chart = st.empty()

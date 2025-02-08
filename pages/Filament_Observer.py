@@ -11,7 +11,7 @@ def check_login():
 check_login()
 
 # Initialize TinyDB
-db = TinyDB('../db/filament_weight.json')
+db = TinyDB('/app/MCI_IoT_Monitor3D/db/filament_weight.json')
 Weight = Query()
 
 # Streamlit setup

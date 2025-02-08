@@ -1,17 +1,20 @@
-# Base-Image
+# Use an appropriate base image
 FROM python:3.9
 
-# Setze das Arbeitsverzeichnis
+# Set the working directory
 WORKDIR /app
 
-# Kopiere start.sh ins Image
-COPY start.sh /app/start.sh
+# Install git
+RUN apt-get update && apt-get install -y git
 
-# Mache die Datei ausführbar
-RUN chmod +x /app/start.sh
+# Clone the repository
+RUN git clone -b main https://github.com/V4Cmeister/MCI_IoT_Monitor3D.git .
 
-# Öffne den Port für Streamlit
-EXPOSE 8501
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Setze das Startkommando
-CMD ["/app/start.sh"]
+# Ensure start.sh is executable
+RUN chmod +x start.sh
+
+# Set the entry point
+CMD ["./start.sh"]

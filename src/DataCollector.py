@@ -12,7 +12,7 @@ logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %
 logger = logging.getLogger()
 
 # Initialize TinyDB
-db_path = 'db/filament_weight.json'
+db_path = '../db/filament_weight.json'
 if not os.path.exists('db'):
     os.makedirs('db')
 if not os.path.exists(db_path) or os.stat(db_path).st_size == 0:

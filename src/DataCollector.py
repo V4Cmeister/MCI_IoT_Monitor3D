@@ -1,7 +1,7 @@
 import paho.mqtt.client as mqtt
 from tinydb import TinyDB, Query
 from datetime import datetime, timedelta
-from credentials import MQTT_USERNAME, MQTT_PASSWORD, MQTT_BROKER, MQTT_PORT
+from src.credentials import MQTT_USERNAME, MQTT_PASSWORD, MQTT_BROKER, MQTT_PORT
 import os
 import json
 import logging

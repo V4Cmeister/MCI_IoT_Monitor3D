@@ -1,18 +1,17 @@
-# Basis-Image mit Python
-FROM python:3.9-slim
-
-# Installiere notwendige Systempakete (z. B. Git)
-RUN apt-get update && apt-get install -y git && apt-get clean
+# Base-Image
+FROM python:3.9
 
 # Setze das Arbeitsverzeichnis
 WORKDIR /app
 
-# Kopiere das Startskript in den Container
+# Kopiere start.sh ins Image
 COPY start.sh /app/start.sh
+
+# Mache die Datei ausführbar
 RUN chmod +x /app/start.sh
 
-# Installiere Streamlit (falls nicht in requirements.txt vorhanden)
-RUN pip install streamlit
+# Öffne den Port für Streamlit
+EXPOSE 8501
 
-# Führt das Startskript aus, wenn der Container gestartet wird
+# Setze das Startkommando
 CMD ["/app/start.sh"]

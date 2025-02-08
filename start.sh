@@ -17,17 +17,18 @@ else
 fi
 
 # Wechsle ins Repo-Verzeichnis
-cd MCI_IoT_Monitor3D
+cd /app/MCI_IoT_Monitor3D
+export PYTHONPATH="$PYTHONPATH:/app/MCI_IoT_Monitor3D"
 
 # Prüfe und installiere Abhängigkeiten, falls requirements.txt geändert wurde
-if [ -f "requirements.txt" ]; then
-    echo "Installiere Abhängigkeiten aus requirements.txt..."
-    pip install -r requirements.txt
-fi
+pip install --upgrade pip
+pip install -r requirements.txt
 
 # Führe die Python-Dateien aus
 echo "Starte DataCollector.py..."
-python DataCollector.py &
+python /app/MCI_IoT_Monitor3D/DataCollector.py &
+
+sleep 2
 
 echo "Starte Streamlit Login.py..."
-streamlit run Login.py
+streamlit run /app/MCI_IoT_Monitor3D/Login.py

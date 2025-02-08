@@ -1,5 +1,5 @@
 import streamlit as st
-from credentials_page import credentials
+from src.credentials_page import credentials
 
 st.set_page_config(
     page_title="Monitor3D",

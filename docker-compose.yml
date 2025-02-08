@@ -1,0 +1,20 @@
+services:
+  monitor3d-service:
+    build:
+      context: .  # Baut das Image direkt aus dem Repo
+      dockerfile: dockerfile  # Falls dein Dockerfile klein geschrieben ist
+    container_name: monitor3d-frontend
+    ports:
+      - "8501:8501"
+    volumes:
+      - /data/compose/monitor3d/InsideDocker:/app  # Portainer-mount-freundlicher Pfad
+    environment:
+      - TZ=Europe/Vienna
+      - DEBUG_MODE=True
+    restart: unless-stopped
+    networks:
+      - my_network
+
+networks:
+  my_network:
+    driver: bridge

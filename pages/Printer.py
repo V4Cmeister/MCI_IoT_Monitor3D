@@ -43,7 +43,7 @@ if st.button("Liste der G-Code-Dateien aktualisieren"):
 selected_file = st.selectbox("Wähle eine Datei", st.session_state.files, index=0 if st.session_state.files else None)
 
 # Load the latest filament weight from the TinyDB
-db = TinyDB('/MCI_IoT_Monitor3D/db/filament_weight.json')
+db = TinyDB('/app/MCI_IoT_Monitor3D/db/filament_weight.json')
 Filament = Query()
 
 # Find the latest weight entry based on the timestamp

@@ -51,3 +51,12 @@ Das Ziel ist es, einen **Ender 5 Pro** über die serielle Schnittstelle eines **
   - **Heizbett-Temperatur**
   - **Druckkopf-Koordinaten** (X/Y/Z-Position)
   - **Lüftergeschwindigkeit** *(Platzhalter, derzeit nicht implementiert)*
+
+#### **Nicht fertiggestellte Aufgaben**
+- **Remote Print Start**
+  - Senden der G-Code-Datei an den Drucker als Paket
+  - Hochladen der G-Code-Datei auf die SD-Karte des Druckers über die Serielle Schnittstelle und Remote-Start des Druckvorgangs von der SD-Karte
+- **Estimated Print Time und Reservierungssystem**
+  - Berechnung der Druckzeit anhand des prozentualen Fortschritts des Drucks und der Layer-Druckzeit
+  - Ermittlung der Druckzeit aus den vom Drucker bereitgestellten Daten
+  - Ein Reservierungssystem war nicht möglich, da die Druckzeit nicht genau ermittelt werden konnte
